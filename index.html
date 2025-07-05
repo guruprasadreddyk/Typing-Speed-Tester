@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Typing Speed Tester</title>
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>⚡Typing Speed Tester</h1>
+
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">WPM</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="timer">60s</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('random')">Random Text</button>
+            <button class="mode-btn" onclick="setMode('sentences')">Random Sentences</button>
+            <button class="mode-btn" onclick="setMode('letters')">Random Letters</button>
+            <button class="mode-btn" onclick="setMode('finger')">Finger Training</button>
+            <button class="mode-btn" onclick="setMode('words')">Random Words</button>
+        </div>
+
+        <div class="settings">
+            <div class="setting-group">
+                <div class="setting-label">Duration</div>
+                <div class="setting-control">
+                    <button class="setting-btn" onclick="setDuration(30)">30s</button>
+                    <button class="setting-btn active" onclick="setDuration(60)">60s</button>
+                    <button class="setting-btn" onclick="setDuration(120)">2min</button>
+                </div>
+            </div>
+            <div class="setting-group">
+                <div class="setting-label">Length</div>
+                <div class="setting-control">
+                    <button class="setting-btn" onclick="setLength(25)">25 words</button>
+                    <button class="setting-btn active" onclick="setLength(50)">50 words</button>
+                    <button class="setting-btn" onclick="setLength(100)">100 words</button>
+                </div>
+            </div>
+            <div class="setting-group" id="fingerSettings">
+                <div class="setting-label">Target Finger</div>
+                <div class="setting-control">
+                    <button class="setting-btn active" onclick="setFinger('all')">All</button>
+                    <button class="setting-btn" onclick="setFinger('pinky')">Pinky</button>
+                    <button class="setting-btn" onclick="setFinger('ring')">Ring</button>
+                    <button class="setting-btn" onclick="setFinger('middle')">Middle</button>
+                    <button class="setting-btn" onclick="setFinger('index')">Index</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="difficulty-indicator" id="difficultyIndicator">
+            Random Text Mode - Mixed characters and punctuation
+        </div>
+
+        <div class="text-display" id="textDisplay"></div>
+
+        <textarea class="input-area" id="userInput" placeholder="Click here and start typing when ready..."
+            disabled></textarea>
+
+        <div class="controls">
+            <button class="btn" id="startBtn" onclick="startTest()">Start Test</button>
+            <button class="btn" id="resetBtn" onclick="resetTest()">Reset</button>
+            <button class="btn" onclick="generateNew()">New Text</button>
+        </div>
+
+        <div class="finger-guide" id="fingerGuide">
+            <div class="finger-info" id="fingerInfo">Focus on using the correct finger for each key!</div>
+            <div class="keyboard-layout">
+                <div class="key" data-finger="pinky">Q</div>
+                <div class="key" data-finger="ring">W</div>
+                <div class="key" data-finger="middle">E</div>
+                <div class="key" data-finger="index">R</div>
+                <div class="key" data-finger="index">T</div>
+                <div class="key" data-finger="index">Y</div>
+                <div class="key" data-finger="index">U</div>
+                <div class="key" data-finger="middle">I</div>
+                <div class="key" data-finger="ring">O</div>
+                <div class="key" data-finger="pinky">P</div>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <h2 class="result-title">🎉 Test Complete!</h2>
+            <div class="result-stats">
+                <div class="result-stat">
+                    <div class="result-stat-label">Words Per Minute</div>
+                    <div class="result-stat-value" id="finalWpm">0</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-label">Accuracy</div>
+                    <div class="result-stat-value" id="finalAccuracy">100%</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-label">Characters</div>
+                    <div class="result-stat-value" id="finalChars">0</div>
+                </div>
+                <div class="result-stat">
+                    <div class="result-stat-label">Errors</div>
+                    <div class="result-stat-value" id="finalErrors">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
